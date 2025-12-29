@@ -14,6 +14,7 @@ export async function POST(request) {
       return NextResponse.json(
         { error: 'content is required and must be a non-empty string' },
         { status: 400 }
+        
       );
     }
 
