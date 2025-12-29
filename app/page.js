@@ -8,14 +8,16 @@ export default function Home() {
   const [maxViews, setMaxViews] = useState('');
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null);
     setResult(null);
+    setLoading(true);
 
     const body = { content };
-    if (ttl) body.ttl_seconds = parseInt(ttl);
+    if (ttl) body.ttl_seconds = parseInt(ttl) * 60;
     if (maxViews) body.max_views = parseInt(maxViews);
 
     try {
@@ -37,43 +39,64 @@ export default function Home() {
       }
     } catch (err) {
       setError('Failed to create paste');
+    } finally {
+      setLoading(false);
     }
   };
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(result.url);
+    alert('Link copied to clipboard');
+  };
+
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-2xl mx-auto px-4">
-        <h1 className="text-3xl font-bold mb-8">Pastebin Lite</h1>
+    <div className="min-h-screen bg-gray-50 py-12 px-4">
+      <div className="max-w-3xl mx-auto">
         
-        <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow p-6 mb-6">
-          <div className="mb-4">
-            <label className="block text-sm font-medium mb-2">Content *</label>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900">Pastebin</h1>
+          <p className="text-gray-600 mt-2">Share text with automatically expiring links</p>
+        </div>
+        
+        <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+          
+          <div className="mb-5">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
+              Content
+            </label>
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              className="w-full border rounded p-2 h-32"
+              className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none h-40 resize-none font-mono text-sm"
+              placeholder="Paste your text here..."
               required
             />
           </div>
 
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-2 gap-4 mb-5">
             <div>
-              <label className="block text-sm font-medium mb-2">TTL (seconds)</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Expire After (minutes)
+              </label>
               <input
                 type="number"
                 value={ttl}
                 onChange={(e) => setTtl(e.target.value)}
-                className="w-full border rounded p-2"
+                className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                placeholder="Optional"
                 min="1"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-2">Max Views</label>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Maximum Views
+              </label>
               <input
                 type="number"
                 value={maxViews}
                 onChange={(e) => setMaxViews(e.target.value)}
-                className="w-full border rounded p-2"
+                className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                placeholder="Optional"
                 min="1"
               />
             </div>
@@ -81,25 +104,42 @@ export default function Home() {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white rounded py-2 hover:bg-blue-700"
+            disabled={loading}
+            className="w-full bg-blue-600 text-white font-medium rounded-md py-3 hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Create Paste
+            {loading ? 'Creating...' : 'Create Paste'}
           </button>
         </form>
 
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-            {error}
+          <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-md">
+            <p className="font-medium">Error</p>
+            <p className="text-sm">{error}</p>
           </div>
         )}
 
         {result && (
-          <div className="bg-green-100 border border-green-400 px-4 py-3 rounded">
-            <p className="font-bold mb-2">Paste created!</p>
-            <p className="mb-2">ID: {result.id}</p>
-            <a href={result.url} className="text-blue-600 underline break-all">
-              {result.url}
-            </a>
+          <div className="bg-green-50 border border-green-200 px-4 py-4 rounded-md">
+            <p className="font-medium text-green-900 mb-3">Paste created successfully</p>
+            <div className="bg-white border border-gray-200 rounded-md p-3 mb-3">
+              <p className="text-xs text-gray-500 mb-1">Shareable Link</p>
+              <p className="text-sm font-mono text-gray-800 break-all">{result.url}</p>
+            </div>
+            <div className="flex gap-3">
+              <button
+                onClick={copyToClipboard}
+                className="flex-1 bg-gray-800 text-white font-medium rounded-md py-2 hover:bg-gray-900 transition"
+              >
+                Copy Link
+              </button>
+              <a
+                href={result.url}
+                target="_blank"
+                className="flex-1 bg-blue-600 text-white font-medium rounded-md py-2 hover:bg-blue-700 transition text-center"
+              >
+                View Paste
+              </a>
+            </div>
           </div>
         )}
       </div>

@@ -7,7 +7,7 @@ export async function GET(request, { params }) {
   try {
     await connectDB();
     
-    const { id } = params;
+    const { id } = await params;  // ← ADD await HERE
     const currentTime = getCurrentTime(request.headers);
 
     const paste = await Paste.findOne({ pasteId: id });
