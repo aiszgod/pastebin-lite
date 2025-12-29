@@ -32,34 +32,34 @@ export default async function ViewPaste({ params }) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen bg-gray-900 py-12 px-4">
       <div className="max-w-4xl mx-auto">
         
-        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+        <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden">
           
-          <div className="border-b border-gray-200 px-6 py-4">
-            <h1 className="text-xl font-semibold text-gray-900">Paste Content</h1>
+          <div className="border-b border-gray-700 px-6 py-4">
+            <h1 className="text-xl font-semibold text-white">Paste Content</h1>
           </div>
 
           <div className="p-6">
-            <pre className="bg-gray-50 border border-gray-200 rounded-md p-4 overflow-x-auto whitespace-pre-wrap break-words font-mono text-sm">
+            <pre className="bg-gray-900 border border-gray-700 rounded-md p-4 overflow-x-auto whitespace-pre-wrap break-words font-mono text-sm text-gray-100">
 {paste.content}
             </pre>
 
             {(paste.max_views || paste.expires_at) && (
-              <div className="mt-5 pt-5 border-t border-gray-200">
+              <div className="mt-5 pt-5 border-t border-gray-700">
                 <div className="grid grid-cols-2 gap-4">
                   {paste.max_views !== null && (
-                    <div className="bg-gray-50 border border-gray-200 rounded-md p-4">
-                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Views Remaining</p>
-                      <p className="text-2xl font-semibold text-gray-900">{paste.max_views - paste.view_count}</p>
+                    <div className="bg-gray-900 border border-gray-700 rounded-md p-4">
+                      <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Views Remaining</p>
+                      <p className="text-2xl font-semibold text-white">{paste.max_views - paste.view_count}</p>
                     </div>
                   )}
                   
                   {paste.expires_at && new Date() < paste.expires_at && (
-                    <div className="bg-gray-50 border border-gray-200 rounded-md p-4">
-                      <p className="text-xs text-gray-500 uppercase tracking-wide mb-1">Expires In</p>
-                      <p className="text-2xl font-semibold text-gray-900">{formatExpiry(paste.expires_at)}</p>
+                    <div className="bg-gray-900 border border-gray-700 rounded-md p-4">
+                      <p className="text-xs text-gray-400 uppercase tracking-wide mb-1">Expires In</p>
+                      <p className="text-2xl font-semibold text-white">{formatExpiry(paste.expires_at)}</p>
                     </div>
                   )}
                 </div>

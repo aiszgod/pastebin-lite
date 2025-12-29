@@ -50,24 +50,24 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen bg-gray-900 py-12 px-4">
       <div className="max-w-3xl mx-auto">
         
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Pastebin</h1>
-          <p className="text-gray-600 mt-2">Share text with automatically expiring links</p>
+          <h1 className="text-3xl font-bold text-white">Pastebin</h1>
+          <p className="text-gray-400 mt-2">Share code and text with self-destructing links</p>
         </div>
         
-        <form onSubmit={handleSubmit} className="bg-white border border-gray-200 rounded-lg p-6 mb-6">
+        <form onSubmit={handleSubmit} className="bg-gray-800 border border-gray-700 rounded-lg p-6 mb-6">
           
           <div className="mb-5">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-300 mb-2">
               Content
             </label>
             <textarea
               value={content}
               onChange={(e) => setContent(e.target.value)}
-              className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none h-40 resize-none font-mono text-sm"
+              className="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none h-40 resize-none font-mono text-sm placeholder-gray-500"
               placeholder="Paste your text here..."
               required
             />
@@ -75,27 +75,27 @@ export default function Home() {
 
           <div className="grid grid-cols-2 gap-4 mb-5">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Expire After (minutes)
               </label>
               <input
                 type="number"
                 value={ttl}
                 onChange={(e) => setTtl(e.target.value)}
-                className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                className="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none placeholder-gray-500"
                 placeholder="Optional"
                 min="1"
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-300 mb-2">
                 Maximum Views
               </label>
               <input
                 type="number"
                 value={maxViews}
                 onChange={(e) => setMaxViews(e.target.value)}
-                className="w-full border border-gray-300 rounded-md p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
+                className="w-full bg-gray-900 border border-gray-700 text-gray-100 rounded-md p-3 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none placeholder-gray-500"
                 placeholder="Optional"
                 min="1"
               />
@@ -112,23 +112,23 @@ export default function Home() {
         </form>
 
         {error && (
-          <div className="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-md">
+          <div className="bg-red-900 border border-red-700 text-red-200 px-4 py-3 rounded-md">
             <p className="font-medium">Error</p>
             <p className="text-sm">{error}</p>
           </div>
         )}
 
         {result && (
-          <div className="bg-green-50 border border-green-200 px-4 py-4 rounded-md">
-            <p className="font-medium text-green-900 mb-3">Paste created successfully</p>
-            <div className="bg-white border border-gray-200 rounded-md p-3 mb-3">
-              <p className="text-xs text-gray-500 mb-1">Shareable Link</p>
-              <p className="text-sm font-mono text-gray-800 break-all">{result.url}</p>
+          <div className="bg-gray-800 border border-gray-700 px-4 py-4 rounded-md">
+            <p className="font-medium text-green-400 mb-3">Paste created successfully</p>
+            <div className="bg-gray-900 border border-gray-700 rounded-md p-3 mb-3">
+              <p className="text-xs text-gray-400 mb-1">Shareable Link</p>
+              <p className="text-sm font-mono text-gray-200 break-all">{result.url}</p>
             </div>
             <div className="flex gap-3">
               <button
                 onClick={copyToClipboard}
-                className="flex-1 bg-gray-800 text-white font-medium rounded-md py-2 hover:bg-gray-900 transition"
+                className="flex-1 bg-gray-700 text-white font-medium rounded-md py-2 hover:bg-gray-600 transition"
               >
                 Copy Link
               </button>
