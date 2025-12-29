@@ -2,8 +2,8 @@
 
 Pastebin Lite is a minimal Pastebin-like web application that allows users to create, share, and automatically expire text pastes based on time or view limits.
 
-<!-- <img width="1510" height="1149" alt="image" src="https://github.com/user-attachments/assets/3a4894db-1be8-479b-8e63-806cdec48e1d" />
-: Main UI -->
+ <img width="1510" height="1149" alt="image" src="https://github.com/user-attachments/assets/3a4894db-1be8-479b-8e63-806cdec48e1d" />
+MAIN UI
 
 ## Features
 
