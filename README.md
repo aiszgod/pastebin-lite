@@ -15,19 +15,20 @@ MAIN UI
 - Health check endpoint to verify application and database status
 - Professional dark-themed UI optimized for code and text sharing
 
-<!-- <img width="1239" height="987" alt="image" src="https://github.com/user-attachments/assets/98db31bb-e528-4927-9d1b-c631109f8db6" />
-: Paste created + link -->
-<!-- <img width="871" height="836" alt="image" src="https://github.com/user-attachments/assets/b2991596-eb5e-4006-86a9-3cab149adb61" />
-: 404 for expired/overused paste -->
-<!-- <img width="989" height="797" alt="image" src="https://github.com/user-attachments/assets/7d8bccda-3751-4c74-895d-6d913dd1c113" />
-: /api/health JSON -->
+<img width="1239" height="987" alt="image" src="https://github.com/user-attachments/assets/98db31bb-e528-4927-9d1b-c631109f8db6" />
+: Paste created + link 
+ <img width="871" height="836" alt="image" src="https://github.com/user-attachments/assets/b2991596-eb5e-4006-86a9-3cab149adb61" />
+: 404 for expired/overused paste 
+<img width="989" height="797" alt="image" src="https://github.com/user-attachments/assets/7d8bccda-3751-4c74-895d-6d913dd1c113" />
+: /api/health JSON 
 
 ---
 
 ## Live Demo
 
 🔗 **Deployed URL**: [https://pastebin-lite-1-pqp4rxsbx-arvindsinghq05-8226s-projects.vercel.app/](https://pastebin-lite-1-pqp4rxsbx-arvindsinghq05-8226s-projects.vercel.app/)
-
+OR
+https://pastebin-lite-1-pqp4rxsbx-arvindsinghq05-8226s-projects.vercel.app/
 ---
 
 ## Tech Stack
