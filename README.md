@@ -8,7 +8,7 @@ MAIN UI
 ## Features
 
 - Create text pastes with a unique shareable URL
-- Optional time-based expiry (configured in minutes)
+- Optional time-based expiry (configured in minutes) 
 - Optional maximum view count per paste
 - Automatic unavailability when either expiry or view limit is reached
 - Dedicated HTML view for each paste
